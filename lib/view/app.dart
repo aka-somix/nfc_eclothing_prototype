@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:nfc_app_prototype/view/dashboard.dart';
 import 'package:nfc_app_prototype/view/read_tag.dart';
 import 'package:nfc_app_prototype/view/user.dart';
+import 'package:nfc_app_prototype/view/wardrobe/gallery.dart';
 
 class App extends StatelessWidget {
   const App({super.key});
@@ -20,6 +21,9 @@ class App extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.teal, brightness: Brightness.dark),
         useMaterial3: true
       ),
+      routes: <String, WidgetBuilder> {
+        '/wardrobe': (BuildContext context) =>  WardrobeGallery(),
+      },
     );
   }
 
@@ -35,7 +39,7 @@ class _HomeState extends State<_Home> {
   
   int _currentPageIndex = 1;
 
-  PageController _pgCtrl = PageController(initialPage: 1); 
+  final PageController _pgCtrl = PageController(initialPage: 1); 
 
   @override
   Widget build(BuildContext context) {
@@ -51,8 +55,8 @@ class _HomeState extends State<_Home> {
       ),
       bottomNavigationBar: CurvedNavigationBar(
         backgroundColor: Colors.transparent,
-        buttonBackgroundColor: Colors.cyan,
-        color: Colors.cyan,
+        buttonBackgroundColor: Colors.orange,
+        color: Colors.teal,
         animationDuration: const Duration(milliseconds: 300),
         items: const <Widget>[
           Icon(Icons.fiber_new_rounded, size: 26, color: Colors.white,),
