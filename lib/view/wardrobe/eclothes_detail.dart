@@ -14,7 +14,7 @@ class EclothesDetailPage extends StatelessWidget {
         children: [
           Text(eclothes.title, style: const TextStyle(color: Colors.teal, fontSize: 24, fontWeight: FontWeight.bold)),
           Container(
-            height: 300,
+            height: 400,
             width: 200,
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(10),

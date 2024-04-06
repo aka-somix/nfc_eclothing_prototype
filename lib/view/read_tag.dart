@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:nfc_app_prototype/data/__mocks__/eclothes.dart';
+import 'package:nfc_app_prototype/models/eclothes.dart';
 import 'package:nfc_manager/nfc_manager.dart';
 import 'package:nfc_app_prototype/models/record.dart';
 
@@ -23,7 +25,7 @@ class ReadTagState extends State<ReadTagView> {
         child: Flex(
         direction: Axis.vertical,
         children: [
-          Text('NFC STATUS ${_status}'),
+          Text('NFC STATUS $_status'),
           const Text("e-Clothing Identifier: "),
           Text(_identifier),
           ElevatedButton(onPressed: _tagRead, child: Text('Tag Read')),
@@ -60,7 +62,11 @@ class ReadTagState extends State<ReadTagView> {
         await NfcManager.instance.stopSession();
         setState(() {
           _status = "GOT TAG";
-        }); 
+        });
+        
+        EClothes eclothes = EclothesMockedController.getFromId(idFound);
+
+        await Navigator.pushNamed(context, '/wardrobe/detail', arguments: eclothes);
     });
   }
 
